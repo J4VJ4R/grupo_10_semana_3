@@ -4,13 +4,18 @@
  */
 package com.grupo10.supermarket.views;
 
+import com.grupo10.mvc.DataTableModel;
+import com.grupo10.mvc.IRenderData;
+import com.grupo10.supermarket.models.Customer;
 import com.grupo10.supermarket.models.SuperMarket;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  *
  * @author jeiss
  */
-public class Customers extends javax.swing.JPanel {
+public class Customers extends javax.swing.JPanel implements IRenderData<Collection<Customer>> {
 
     /**
      * Creates new form Customers
@@ -35,6 +40,7 @@ public class Customers extends javax.swing.JPanel {
         postitionFilterTextField = new javax.swing.JTextField();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
+        setupTableModel();
         customersTable = new javax.swing.JTable();
         customerEditor = new com.grupo10.supermarket.views.CustomerEditor();
 
@@ -75,29 +81,7 @@ public class Customers extends javax.swing.JPanel {
 
         jSplitPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        customersTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "First Name", "Last Name", "Identification", "Telephone", "Position"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                true, true, false, true, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        customersTable.setModel(customersTableModel);
         jScrollPane1.setViewportView(customersTable);
 
         jSplitPane1.setRightComponent(jScrollPane1);
@@ -118,4 +102,19 @@ public class Customers extends javax.swing.JPanel {
     public javax.swing.JTextField postitionFilterTextField;
     public javax.swing.JComboBox<SuperMarket> superMarketFilterComboBox;
     // End of variables declaration//GEN-END:variables
+
+    private final DataTableModel<Customer> customersTableModel = new DataTableModel<>();
+    
+    private void setupTableModel() {
+        customersTableModel.addColumn("First Name", (customer, index, name) -> customer.getName());
+        customersTableModel.addColumn("Last Name", (customer, index, name) -> customer.getLastname());
+        customersTableModel.addColumn("Identification", (customer, index, name) -> customer.getIdentification());
+        customersTableModel.addColumn("Telephone", (customer, index, name) -> customer.getTelephone());
+        customersTableModel.addColumn("Position", (customer, index, name) -> customer.getPosition());
+    }
+    
+    @Override
+    public void renderData(Collection<Customer> data) {
+        customersTableModel.setData(new ArrayList<>(data));
+    }
 }

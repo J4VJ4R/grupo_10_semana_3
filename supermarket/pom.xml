@@ -12,4 +12,11 @@
         <exec.mainClass>com.grupo10.supermercado.Supermercado</exec.mainClass>
     </properties>
     <name>supermarket</name>
+    <dependencies>
+        <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+        </dependency> 
+    </dependencies>
 </project>

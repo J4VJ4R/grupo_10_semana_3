@@ -5,6 +5,7 @@
 package com.grupo10.supermarket;
 
 import com.grupo10.mvc.StateUnit;
+import com.grupo10.supermarket.models.Customer;
 import com.grupo10.supermarket.models.SuperMarket;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,6 +18,8 @@ public class AppState {
     private final StateUnit<SuperMarket> currentSuperMarket = new StateUnit<>(null);
     private final StateUnit<Collection<SuperMarket>> currentSuperMarkets = new StateUnit<>(new ArrayList<>());
     private final StateUnit<SuperMarket> currentSuperMarketFilter = new StateUnit<>(null);
+    
+    private final StateUnit<Collection<Customer>> currentCustomers = new StateUnit<>(new ArrayList<>());
 
     public StateUnit<SuperMarket> getCurrentSuperMarket() {
         return currentSuperMarket;
@@ -28,5 +31,9 @@ public class AppState {
 
     public StateUnit<SuperMarket> getCurrentSuperMarketFilter() {
         return currentSuperMarketFilter;
+    }
+
+    public StateUnit<Collection<Customer>> getCurrentCustomers() {
+        return currentCustomers;
     }
 }
