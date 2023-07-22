@@ -40,8 +40,6 @@ public class Customers extends javax.swing.JPanel {
 
         jLabel1.setText("Super Market:");
 
-        superMarketFilterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Super Market" }));
-
         jLabel2.setText("Postition");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

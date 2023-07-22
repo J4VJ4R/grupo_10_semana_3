@@ -16,9 +16,9 @@ public final class StateUnit<T> {
 
     private T value;
 
-    private final List<ValueChangedHandler> valueChangedHigh;
-    private final List<ValueChangedHandler> valueChangedMedium;
-    private final List<ValueChangedHandler> valueChangedLow;
+    private final List<ValueChangedHandler<T>> valueChangedHigh;
+    private final List<ValueChangedHandler<T>> valueChangedMedium;
+    private final List<ValueChangedHandler<T>> valueChangedLow;
 
     public StateUnit(T value) {
         this.valueChangedLow = new ArrayList<>();
@@ -39,7 +39,7 @@ public final class StateUnit<T> {
         this.value = value;
     }
 
-    public void onChange(ValueChangedHandler handler) {
+    public void onChange(ValueChangedHandler<T> handler) {
         onChange(handler, ValueChangedHandlerPriority.Medium);
     }
 

@@ -4,11 +4,15 @@
  */
 package com.grupo10.supermarket.views;
 
+import com.grupo10.mvc.IRenderData;
+import com.grupo10.mvc.IReturnData;
+import com.grupo10.supermarket.models.SuperMarket;
+
 /**
  *
  * @author jeiss
  */
-public class SuperMarketEditor extends javax.swing.JPanel {
+public class SuperMarketEditor extends javax.swing.JPanel implements IRenderData<SuperMarket>, IReturnData<SuperMarket> {
 
     /**
      * Creates new form SuperMarketEditor
@@ -87,4 +91,19 @@ public class SuperMarketEditor extends javax.swing.JPanel {
     private javax.swing.JTextField nameTextField;
     public javax.swing.JButton saveSuperMarketButton;
     // End of variables declaration//GEN-END:variables
+  
+    @Override
+    public void renderData(SuperMarket data) {
+        if(data.getCity() != null && !data.getCity().isBlank()) {
+            cityComboBox.setSelectedItem(data.getCity());
+        }
+        nameTextField.setText(data.getName());
+
+        nameTextField.requestFocus();
+    }
+
+    @Override
+    public SuperMarket collectData() {
+        return new SuperMarket(nameTextField.getText(), cityComboBox.getSelectedItem().toString());
+    }
 }
