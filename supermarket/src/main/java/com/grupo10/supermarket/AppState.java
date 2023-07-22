@@ -15,7 +15,8 @@ import java.util.Collection;
  */
 public class AppState {
     private final StateUnit<SuperMarket> currentSuperMarket = new StateUnit<>(null);
-    private final StateUnit<Collection<SuperMarket>> currentSuperMarkets = new StateUnit<>(new ArrayList<SuperMarket>());
+    private final StateUnit<Collection<SuperMarket>> currentSuperMarkets = new StateUnit<>(new ArrayList<>());
+    private final StateUnit<SuperMarket> currentSuperMarketFilter = new StateUnit<>(null);
 
     public StateUnit<SuperMarket> getCurrentSuperMarket() {
         return currentSuperMarket;
@@ -23,5 +24,9 @@ public class AppState {
 
     public StateUnit<Collection<SuperMarket>> getCurrentSuperMarkets() {
         return currentSuperMarkets;
+    }
+
+    public StateUnit<SuperMarket> getCurrentSuperMarketFilter() {
+        return currentSuperMarketFilter;
     }
 }

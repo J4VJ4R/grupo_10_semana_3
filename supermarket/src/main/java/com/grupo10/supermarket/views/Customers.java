@@ -4,6 +4,8 @@
  */
 package com.grupo10.supermarket.views;
 
+import com.grupo10.supermarket.models.SuperMarket;
+
 /**
  *
  * @author jeiss
@@ -114,6 +116,6 @@ public class Customers extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     public javax.swing.JTextField postitionFilterTextField;
-    public javax.swing.JComboBox<String> superMarketFilterComboBox;
+    public javax.swing.JComboBox<SuperMarket> superMarketFilterComboBox;
     // End of variables declaration//GEN-END:variables
 }

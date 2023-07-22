@@ -49,4 +49,11 @@ public class SuperMarket {
     public String getCity() {
         return city;
     }
+
+    @Override
+    public String toString() {
+        return name + ", " + city;
+    }
+    
+    
 }
