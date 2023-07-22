@@ -34,7 +34,7 @@ public class Customers extends javax.swing.JPanel {
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         customersTable = new javax.swing.JTable();
-        customerEditor1 = new com.grupo10.supermarket.views.CustomerEditor();
+        customerEditor = new com.grupo10.supermarket.views.CustomerEditor();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -101,21 +101,21 @@ public class Customers extends javax.swing.JPanel {
         jScrollPane1.setViewportView(customersTable);
 
         jSplitPane1.setRightComponent(jScrollPane1);
-        jSplitPane1.setLeftComponent(customerEditor1);
+        jSplitPane1.setLeftComponent(customerEditor);
 
         add(jSplitPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.grupo10.supermarket.views.CustomerEditor customerEditor1;
+    public com.grupo10.supermarket.views.CustomerEditor customerEditor;
     private javax.swing.JTable customersTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTextField postitionFilterTextField;
-    private javax.swing.JComboBox<String> superMarketFilterComboBox;
+    public javax.swing.JTextField postitionFilterTextField;
+    public javax.swing.JComboBox<String> superMarketFilterComboBox;
     // End of variables declaration//GEN-END:variables
 }

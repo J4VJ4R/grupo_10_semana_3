@@ -9,6 +9,6 @@ package com.grupo10.mvc;
  * @author jeiss
  * @param <T>
  */
-public interface ICollectData<T> {
+public interface IReturnData<T> {
     public T collectData();
 }

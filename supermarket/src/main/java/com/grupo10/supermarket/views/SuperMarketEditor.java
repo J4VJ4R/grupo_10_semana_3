@@ -85,6 +85,6 @@ public class SuperMarketEditor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JButton saveSuperMarketButton;
+    public javax.swing.JButton saveSuperMarketButton;
     // End of variables declaration//GEN-END:variables
 }

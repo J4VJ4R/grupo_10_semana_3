@@ -28,21 +28,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         mainTabbedPane = new javax.swing.JTabbedPane();
         superMarketsView = new com.grupo10.supermarket.views.SuperMarkets();
-        superMarkets1 = new com.grupo10.supermarket.views.SuperMarkets();
-        customers1 = new com.grupo10.supermarket.views.Customers();
-        customers2 = new com.grupo10.supermarket.views.Customers();
+        customersView = new com.grupo10.supermarket.views.Customers();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        superMarketsView.setLayout(new java.awt.BorderLayout());
-        superMarketsView.add(superMarkets1, java.awt.BorderLayout.CENTER);
-
         mainTabbedPane.addTab("Super Markets", superMarketsView);
-
-        customers1.setLayout(new java.awt.BorderLayout());
-        customers1.add(customers2, java.awt.BorderLayout.CENTER);
-
-        mainTabbedPane.addTab("Customers", customers1);
+        mainTabbedPane.addTab("Customers", customersView);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,10 +85,8 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.grupo10.supermarket.views.Customers customers1;
-    private com.grupo10.supermarket.views.Customers customers2;
+    public com.grupo10.supermarket.views.Customers customersView;
     private javax.swing.JTabbedPane mainTabbedPane;
-    private com.grupo10.supermarket.views.SuperMarkets superMarkets1;
-    private com.grupo10.supermarket.views.SuperMarkets superMarketsView;
+    public com.grupo10.supermarket.views.SuperMarkets superMarketsView;
     // End of variables declaration//GEN-END:variables
 }
