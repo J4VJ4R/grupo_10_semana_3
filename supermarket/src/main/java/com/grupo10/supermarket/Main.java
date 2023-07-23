@@ -4,6 +4,7 @@
 package com.grupo10.supermarket;
 
 import com.grupo10.supermarket.controllers.CustomersController;
+import com.grupo10.supermarket.controllers.CustomersEditorController;
 import com.grupo10.supermarket.controllers.SuperMarketsController;
 import com.grupo10.supermarket.controllers.SuperMarketsEditorController;
 import com.grupo10.supermarket.models.ICustomerRepository;
@@ -60,7 +61,8 @@ public class Main {
         
         ISuperMarketRepository superMarketsRepository = new MySQLSuperMarketRepository(connection);
         ICustomerRepository customersRepository = new MySQLCustomerRepository(connection);
-
+        
+        // Setup Controllers.
         new SuperMarketsController(
                 superMarketsRepository,
                 mainWindow.superMarketsView,
@@ -76,6 +78,12 @@ public class Main {
         new CustomersController(
                 mainWindow.customersView,
                 customersRepository,
+                appState
+        ).setup();
+        
+        new CustomersEditorController(
+                mainWindow.customersView.customerEditor, 
+                customersRepository, 
                 appState
         ).setup();
 

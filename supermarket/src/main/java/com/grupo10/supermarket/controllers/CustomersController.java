@@ -14,6 +14,7 @@ import com.grupo10.supermarket.views.Customers;
  * @author jeiss
  */
 public class CustomersController {
+
     private final Customers view;
     private final ICustomerRepository customersRepository;
     private final AppState appState;
@@ -29,30 +30,36 @@ public class CustomersController {
             view.superMarketFilterComboBox.removeAllItems();
             newData.forEach(market -> view.superMarketFilterComboBox.addItem(market));
         });
-        
+
         // Initial setup
         var currentMarkets = appState.getCurrentSuperMarkets().getValue();
         currentMarkets.forEach(market -> view.superMarketFilterComboBox.addItem(market));
-        
+
         view.superMarketFilterComboBox.addActionListener((e) -> {
             Object selectedMarket = view.superMarketFilterComboBox.getSelectedItem();
-            if(selectedMarket == null) {
+            if (selectedMarket == null) {
                 return;
             }
-            appState.getCurrentSuperMarketFilter().setValue((SuperMarket)selectedMarket);
+            appState.getCurrentSuperMarketFilter().setValue((SuperMarket) selectedMarket);
         });
-        
+
         appState.getCurrentSuperMarketFilter().onChange((newValue, oldValue) -> {
-            if(newValue == null || newValue.getId().equals(oldValue.getId())){
+            if (newValue == null || (oldValue != null && newValue.getId().equals(oldValue.getId()))) {
                 return;
             }
-            
+
             var customers = customersRepository.listByMarket(newValue.getId());
             appState.getCurrentCustomers().setValue(customers);
         });
-        
+
         appState.getCurrentCustomers().onChange((newValue, oldValue) -> {
             view.renderData(newValue);
         });
+        
+        var currentSuperMarkets = appState.getCurrentSuperMarkets().getValue();
+
+        if (!currentSuperMarkets.isEmpty()) {
+            appState.getCurrentSuperMarketFilter().setValue(currentSuperMarkets.iterator().next());
+        }
     }
 }

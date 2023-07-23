@@ -4,11 +4,15 @@
  */
 package com.grupo10.supermarket.views;
 
+import com.grupo10.mvc.IRenderData;
+import com.grupo10.mvc.IReturnData;
+import com.grupo10.supermarket.models.Customer;
+
 /**
  *
  * @author jeiss
  */
-public class CustomerEditor extends javax.swing.JPanel {
+public class CustomerEditor extends javax.swing.JPanel implements IReturnData<Customer>, IRenderData<Customer> {
 
     /**
      * Creates new form CustomerEditor
@@ -116,7 +120,29 @@ public class CustomerEditor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JTextField positionTextField;
-    private javax.swing.JButton saveCustomerButton;
+    public javax.swing.JButton saveCustomerButton;
     private javax.swing.JTextField telephoneTextField;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public Customer collectData() {
+        var identificationNumber = Integer.parseInt(identificationTextField.getText());
+
+        return new Customer(
+                firstNameTextField.getText(),
+                lastNameTextField.getText(),
+                identificationNumber,
+                telephoneTextField.getText(),
+                positionTextField.getText()
+        );
+    }
+
+    @Override
+    public void renderData(Customer data) {
+        firstNameTextField.setText(data.getName());
+        lastNameTextField.setText(data.getLastname());
+        identificationTextField.setText("" + data.getIdentification());
+        telephoneTextField.setText(data.getTelephone());
+        positionTextField.setText(data.getPosition());
+    }
 }
